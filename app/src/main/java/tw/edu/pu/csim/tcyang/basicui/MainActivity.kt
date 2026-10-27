@@ -1,9 +1,11 @@
 package tw.edu.pu.csim.tcyang.basicui
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +23,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -43,6 +46,7 @@ import tw.edu.pu.csim.tcyang.basicui.ui.theme.BasicUITheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
         setContent {
             BasicUITheme {
@@ -58,12 +62,42 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Main(modifier: Modifier = Modifier) {
-    Box() {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.animal3),
+                contentDescription = "android.png",
+                modifier = Modifier.size(90.dp)
+            )
+
+            Spacer(modifier = Modifier.width(10.dp))
+
+            Image(
+                painter = painterResource(id = R.drawable.animal5),
+                contentDescription = "animal1.png",
+                modifier = Modifier.size(90.dp)
+            )
+
+            Spacer(modifier = Modifier.width(10.dp))
+
+            Image(
+                painter = painterResource(id = R.drawable.animal2),
+                contentDescription = "animal6.png",
+                modifier = Modifier.size(90.dp)
+            )
+        }
+    }
         LazyColumnExample(modifier)
         ColumnExample(modifier)
         TextFieldExample(modifier)
     }
-}
 
 
 @Composable
@@ -154,5 +188,6 @@ fun TextFieldExample(modifier: Modifier = Modifier) {
         )
     }
 }
+
 
 
